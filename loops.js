@@ -92,12 +92,13 @@ var min = a[0];
 var position = 0;
 
 for(i = 1; i < a.length; i++){
-    if(a[i] <= min){
+    if(a[i] < min){
         min = a[i];
         position = i;
     }
 }
 console.log(min + " is on the position " + position);
+
 //------------------------------------
 var sum = 0;
 for (i = 1; i < 1000; i++){
@@ -138,3 +139,57 @@ for (i = 1; i < 101; i++){
         console.log(i);
     }
 }
+
+//-----------------------------
+var a = [6, 5, 7, 9, 11, 5, 10];
+var max = a[0];
+var positionMax = 0;
+var i;
+
+for (i = 1; i < a.length; i++){
+    if(a[i] > max){
+        max = a[i];
+        positionMax = i;
+    }
+}
+console.log(max + " is on the position " + positionMax);
+
+// minimum
+var min = a[0];
+var positionMin = 0;
+
+for(i = 1; i < a.length; i++){
+    if(a[i] < min){
+        min = a[i];
+        positionMin = i;
+    }
+}
+console.log(min + " is on the position " + positionMin);
+
+// zameniti mesta min i max
+
+//---------------------------------
+
+n = 4;
+s = "*";
+
+for(r = 0; r <= n-1; r++){
+    if(r == 0 || r == n-1){
+        var line = "";
+        for (i = 0; i < n; i ++){
+            line += s;
+        }
+        line = line + "\n"
+        console.log(line);
+    } else {
+        var line = "";
+        line = line + s;
+        for(i = 0; i < n-2; i++){
+            line = line + " ";
+        }
+        line = line + s;
+        line += "\n";
+        console.log(line);
+    }
+}
+
