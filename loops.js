@@ -167,6 +167,11 @@ for(i = 1; i < a.length; i++){
 console.log(min + " is on the position " + positionMin);
 
 // zameniti mesta min i max
+var temp;
+temp = a[positionMax];
+a[positionMax] = a[positionMin];
+a[positionMin] = temp;
+console.log(a);
 
 //---------------------------------
 
