@@ -73,3 +73,68 @@ if (average < 60){
 } else if (average < 100){
     console.log("A");
 }
+
+//----------------------------------
+
+var a = [6, 5, 7, 9, 11, 5, 10];
+var max = a[0];
+var i;
+
+for (i = 1; i < a.length; i++){
+    if(a[i] > max){
+        max = a[i];
+    }
+}
+console.log(max);
+
+// minimum
+var min = a[0];
+var position = 0;
+
+for(i = 1; i < a.length; i++){
+    if(a[i] <= min){
+        min = a[i];
+        position = i;
+    }
+}
+console.log(min + " is on the position " + position);
+//------------------------------------
+var sum = 0;
+for (i = 1; i < 1000; i++){
+    if ( i % 3 === 0 && i % 5 === 0) {
+        sum = sum + i;
+    }
+}
+console.log(sum);
+
+//----------------------------------------------------------------
+var result = "";
+var x = [ '1', 'A', 'B', "c", "r", true, NaN, undefined];
+
+for (var i in x) {
+
+result +=  x[i];
+}
+console.log(result);
+//------------------------
+var sum = 0;
+var x;
+for ( i = 1; i < 21; i++) {
+    x = i * i;
+    sum += x;
+}
+console.log(sum);
+//-------------------------
+
+
+for (i = 1; i < 101; i++){
+    if (i % 3 === 0 && i % 5 === 0){
+        console.log("FizzBuzz");
+    } else if (i % 3 === 0){
+        console.log("Fizz");
+    } else if (i % 5 === 0){
+        console.log("Buzz");
+    } else {
+        console.log(i);
+    }
+}
