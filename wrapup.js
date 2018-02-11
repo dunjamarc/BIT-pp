@@ -76,7 +76,7 @@ function separator(str, a) {
 
 console.log(separator("My random string"));
 
-//-------------------------------------------
+//-------------------------------------------10
 
 function partOfString(str, n) {
     var newStr = "";
@@ -87,6 +87,19 @@ function partOfString(str, n) {
 }
 
 console.log(partOfString("tralala", 5));
+
+//--------------------------------------------11
+
+function arrOfNum(arr){
+    var newArr = [];
+    for(var i = 0; i < arr.length; i++){
+        if(isNaN(arr[i]) === false && arr[i] !== Infinity){
+            newArr.push(Number(arr[i]));
+        }
+    }
+    return newArr;
+}
+console.log(arrOfNum(["1", "21", undefined, "42", "1e+3", Infinity]));
 
 //---------------------------------------------12
 

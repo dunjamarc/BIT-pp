@@ -22,7 +22,7 @@ function sumOfDigits(n) {
     return lastDigit + firstDigit;
 }
 
-console.log(sumOfDigits(-6));
+console.log(sumOfDigits(789));
 
 //-----------------------------------------4
 
@@ -162,3 +162,61 @@ function symmetricArr(arr){
 }
 
 console.log(symmetricArr([2,4,-2,7,7,-2,4,2]));
+
+//-----------------------------------------------3
+
+function minNum(arr){
+    var min = arr[0];
+    for(var i = 1; i < arr.length; i++){
+        if(arr[i] < min){
+            min = arr[i];
+        }
+    }
+    return min + ", " + arr.indexOf(min);
+}
+
+console.log(minNum([-2, 4, 2, -32, 2, -1, 6, -11]));
+
+//-----------------------------------------------5
+
+function sumOfPos(arr){
+    var sum = 0;
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] > 0){
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+
+console.log(sumOfPos([3, 11, -5, -3, 2]));
+
+//----------------------------------------9
+
+function delEl(arr, e){
+    var newArr = [];
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] != e){
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+
+console.log(delEl([4, 6, 2, 8, 2, 2], 2));
+
+//--------------------------------------------10
+
+function insertEl(arr, e, p){
+    if(p > arr.length){
+        return "Error";
+    } else {
+        for(var i = arr.length; i > p; i--){
+            arr[i] = arr[i-1];
+        }
+        arr[p] = e;
+        return arr;
+    }
+}
+
+console.log(insertEl([2, -2, 33, 12, 5, 8], 78, 6));
