@@ -105,3 +105,25 @@ var table = function(){
 console.log(table());
 
 //--------------------------------------------6
+
+var tempConvertor = function(c){
+    return c * 9/5 + 32;
+}
+
+console.log(tempConvertor(20));
+
+//--------------------------------------------7
+
+var maxEl = function(arr){
+    var max = arr[0];
+    for(var i = 1; i < arr.length; i++){
+        if(isNaN(arr[i])){
+            continue;
+        } else if(arr[i] > max){
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+console.log(maxEl([2, undefined, 100, 5, "a", 45, 3, 7, 9, 1, 88, true]));
