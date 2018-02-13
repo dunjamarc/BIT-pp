@@ -112,18 +112,84 @@ var tempConvertor = function(c){
 
 console.log(tempConvertor(20));
 
-//--------------------------------------------7
+//-----------------------------------------------7 
 
 var maxEl = function(arr){
-    var max = arr[0];
-    for(var i = 1; i < arr.length; i++){
-        if(isNaN(arr[i])){
-            continue;
-        } else if(arr[i] > max){
-            max = arr[i];
+    var newArr = [];
+    var k = 0;
+    for(var i = 0; i < arr.length; i++){
+        if(!isNaN(arr[i])){     // loop array and filter non numbers
+            newArr[k] = arr[i];
+            k++;
+        }
+    }
+
+    var max = newArr[0];
+    for(var j = 1; j < newArr.length; j++){
+        if(newArr[j] > max){     // find max number of new array
+            max = newArr[j];
         }
     }
     return max;
 }
 
-console.log(maxEl([2, undefined, 100, 5, "a", 45, 3, 7, 9, 1, 88, true]));
+console.log(maxEl([2, undefined, 100, 5, "a", 45, 3, 7, 9, 1, 88]));
+
+//------------------------------------15 printing words in rectangular
+
+var printRect = function(a) {
+    
+    var longestElem = a[0].length;
+    //find longest element in array
+    for (var i = 1; i < a.length; i++) {
+        if(a[i].length > longestElem) {
+            longestElem = a[i].length;
+        }
+    }
+    //number of columns and rows
+    var numOfCols = longestElem + 4;
+    var numOfRows = a.length + 2;
+
+    //first and last line
+    var firstLine = '';
+    for(i = 0; i < numOfCols; i++ ) {
+        firstLine += '*';
+    }
+
+    var line = '';
+ /*   for(var j = 0; j < numOfCols; j++) {
+        if(j == 0 || j == numOfCols - 1) {
+            line += '*';
+        } else if (j == 1 || j == numOfCols - 2) {
+            line += ' ';
+        } else {
+
+            for(var k = 0, m = 0; m < numOfCols - 4; k++, m++) {
+                
+                if (k < a[0].length ) {
+                    line += a[0][k];
+                } else {
+                    line += ' ';
+                }
+            }
+        }
+        console.log(line);
+    } */
+
+    for(var j = 0; j < a.length; j++){    //adding spaces to shorter words
+        if(a[j].length < longestElem){
+            var space = longestElem - a[j].length;
+            for(var k = 0; k < space; k++){
+                a[j] += " ";
+            }
+        }
+    }
+
+    for(var m = 0; m < a.length; m++){       // defining lines (with words)
+        line += "* " + a[m] + " *" + "\n";
+    }
+
+    var result = firstLine + "\n" + line + firstLine;
+    console.log(result);
+}
+printRect(["Hello", "World", "in", "a", "frame"]);
