@@ -83,25 +83,24 @@ function f(name, surname) {
 f("dosta.je", "bilo")();
 
 
-// IIFE
+// IIFE -------------------------------------------------
 
-(function (counta) {
+(function (str) {
+    var arr = [];
+    for(var i = 0; i < str.length; i++){
+        arr[i] = str[i];
+    }
     var sum = 0;
-    for (var i = 0; i < counta.length; i++) {
-        var newstr
-        if (counta[i] == "a") {
+    var newStr = "";
+    for (var j = 0; j < arr.length; j++){
+        if(arr[j] == "a"){
+            arr[j] = "*";
             sum++;
         }
-        if (counta[i] == "a") {
-            newstr[i] = "*";
-        } else {
-            newstr[i] = counta[i];
-        }
+        newStr += arr[j];
+    }
+    console.log(newStr, sum);
+    
 
-    } console.log(sum);
-    console.log(newstr);
+})("javascript");
 
-
-}
-
-)("javascript");
