@@ -170,4 +170,9 @@ var capString = function(str){
 
 console.log(capString("HELLO WORLD"));
 
-// b
+// b, c, d, e unfinished
+var digits = function(str){
+    
+}
+
+console.log(digits("Hel10 W0rld"));
