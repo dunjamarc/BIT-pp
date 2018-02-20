@@ -168,11 +168,123 @@ var capString = function(str){
     }
 }
 
-console.log(capString("HELLO WORLD"));
+//console.log(capString("HELLO WORLD"));
 
-// b, c, d, e unfinished
+// b
 var digits = function(str){
-    
+   if(str.search(/[0-9]/) === -1){
+       return false;
+   } else {
+       return true;
+   }
 }
 
-console.log(digits("Hel10 W0rld"));
+//console.log(digits("HelloWorld12"));
+
+// c
+var hexColor = function(str){
+    if(str.length !== 6 || str.search(/[G-Z]/i) !== -1){
+        return false;
+    } else {
+        return true;
+    }
+}
+ 
+//console.log(hexColor("ffaa12"));
+
+// d
+var year = function(num){
+    if(1900 < num < 2018){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//console.log(year(1986));
+
+// e
+
+function validator(a, b, c, d){
+    return {
+        stringValidator: a,
+        passwordValidator: b,
+        colorValidator: c,
+        yearValidator: d
+    }
+}
+
+var obj = validator(capString, digits, hexColor, year);
+console.log(obj.stringValidator('HDEUU')); 
+
+// ----------------------------------------------------8 
+
+var numOfDaysToBd = function(day) {
+    var birthday = new Date(day);
+    var presentDay = new Date();
+    var untill = Math.ceil((birthday - presentDay) / 86400000);
+    return untill + ' days';
+}
+
+console.log(numOfDaysToBd('2 25 2018'));
+
+//-----------------------------------------------9 
+
+var travelTime = function(dep, arr) {
+    var departure = new Date('1 1 2018 ' + dep);
+    var arrival = new Date('1 1 2018 ' + arr);
+    
+    var difference = new Date(arrival - departure);
+    console.log(difference);
+    var diff = difference.getUTCHours() + ':' + difference.getMinutes() + ':' + difference.getSeconds();
+    return diff;
+}
+
+console.log(travelTime('8:22:13', '11:43:22'));
+
+//---------------------------------------------10
+/*function factory(x, y, z){    FACTORY
+    return {
+        x: x,
+        y: y,
+        z: z 
+    }
+}
+
+console.log(factory(3, 5, 1)); */
+
+function Points(x,y,z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+}
+
+var point1 = new Points(5, 5, 5);
+var point2 = new Points(0, 0, 0);
+
+console.log(point1);
+
+var distance = function(p1, p2) {
+   return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2) + Math.pow(p1.z - p2.z, 2));
+}
+
+console.log(distance(point1, point2));
+
+//---------------------------------------------11
+// a, b
+var randomInteger = function(max, min){
+    return Math.round(((max - min) * Math.random()) + min);
+}
+
+console.log(randomInteger(100, 50));
+
+// c
+var arrOfRandom = function(n, randFunc, min, max) {
+    var arr = [];
+    for (var i = 0; i < n; i++) {
+        arr[i] = randFunc(min, max);
+    }
+    return arr;
+}
+
+console.log(arrOfRandom(5, randomInteger, 50, 100));
