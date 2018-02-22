@@ -21,14 +21,6 @@
         }
     }
 
-    var titanic = new Movie("Titanic", "Drama", "180min"); 
-    var anaconda = new Movie("Anaconda", "Horror", "95min"); 
-    var iJones = new Movie("Indiana Jones", "Action", "120min"); 
-    var bigGetsby = new Movie("Big Getsby", "Drama", "155min");
-    var lajanjeNaZvezde = new Movie("Lajanje na zvezde", "Comedy", "125min");
-    var saw = new Movie("Saw", "Horror", "120min");
-    var tombRider = new Movie("Tomb Rider", "Action", "130min");
-
 
     function Program(date){
         this.date = new Date(date);
@@ -47,11 +39,11 @@
                 totalLength += parseInt(this.listOfMovies[i].length);
             }
             
-            var allData = this.date + ', ' + totalLength + '\n'; 
+            var allData = this.date + ', program duration ' + totalLength + 'min \n'; 
             
             var line = "";
             for(var j = 0; j < this.totalNo; j++){
-                line += "\t" + this.listOfMovies[j].getData() + "\n";
+                line += "\t \t" + this.listOfMovies[j].getData() + "\n";
             }
             return allData + line;
         };
@@ -62,37 +54,59 @@
     function Festival(name){
         this.name = name;
         this.listOfPrograms = [];
-        //this.allMovies = ;
+
+        this.allMovies = function(){
+            var noAllMovies = 0;
+            for(var i = 0; i < this.listOfPrograms.length; i++){
+                noAllMovies += this.listOfPrograms[i].totalNo;  
+            }
+            return noAllMovies;
+        }
 
         this.addProgram = function(p){
             this.listOfPrograms.push(p);
         };
 
-        this.getData = function(){         // unfinished
-            var noAllMovies = 0;
-            for(var i = 0; i < this.listOfPrograms.length; i++){
-                noAllMovies += this.listOfPrograms[i].totalNo;  
-                return noAllMovies;
+        this.getData = function(){         
+            var festInfo = this.name + " festival has " + this.allMovies() + " movie titles \n";
+            for(var j = 0; j < this.listOfPrograms.length; j++){
+                festInfo += "\t" + this.listOfPrograms[j].getData() + "\n";
             }
+            return festInfo;
         }
     }
 
+    function createMovie(title, genre, length){
+        return new Movie(title, genre, length);
+    }
 
-    var p1 = new Program("2018 2 25");
+    function createProgram(date){
+        return new Program(date);
+    }
+
+    var titanic = createMovie("Titanic", "Drama", "180min"); 
+    var anaconda = createMovie("Anaconda", "Horror", "95min"); 
+    var iJones = createMovie("Indiana Jones", "Action", "120min"); 
+    var bigGetsby = createMovie("Big Getsby", "Drama", "155min");
+    var lajanjeNaZvezde = createMovie("Lajanje na zvezde", "Comedy", "125min");
+    var saw = createMovie("Saw", "Horror", "120min");
+    var tombRider = createMovie("Tomb Rider", "Action", "130min");
+
+    var p1 = createProgram("2018 2 25");
     p1.addMovie(titanic);
     p1.addMovie(anaconda);
     p1.addMovie(iJones);
-    var p2 = new Program("2018 2 26");
+
+    var p2 = createProgram("2018 2 26");
     p2.addMovie(bigGetsby);
     p2.addMovie(lajanjeNaZvezde);
     p2.addMovie(saw);
     p2.addMovie(tombRider);
+
     var festival = new Festival("FEST");
     festival.addProgram(p1);
     festival.addProgram(p2);
 
-    console.log(festival);
-    console.log(p1.getData());
-    
+    console.log(festival.getData());
     
 })();
