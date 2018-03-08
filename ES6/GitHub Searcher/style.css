@@ -1,0 +1,13 @@
+input {
+    display: block;
+    margin-bottom: 100px;
+}
+
+div {
+    width: 960px;
+    margin: 0 auto;
+}
+
+p {
+    display: inline;
+}
