@@ -1,8 +1,8 @@
-function capitalize(...arg){
+let capitalize = (...arg) => {
     let arr = [...arg];
     let newArr = [];
-    arr.forEach(function(e){
-        if(typeof e == 'string'){
+    arr.forEach((e) => {
+        if (typeof e == 'string') {
             newArr.push(`${e[0].toUpperCase()}${e.substring(1)}`);
         }
     })
@@ -13,7 +13,7 @@ console.log(capitalize('hello', 'there', 'ES', 6));
 
 // ------------------------------------------------------------2
 
-function tax(price){
+let tax = (price) => {
     const taxValue = 0.2;
     return price * taxValue;
 }
@@ -22,11 +22,9 @@ console.log(tax(120));
 
 // -----------------------------------------3
 
-function increase(arr, v = 1){
+let increase = (arr, v = 1) => {
 
-    let newArr = arr.map(function(e){
-        return e + v;
-    })
+    let newArr = arr.map((e) => e + v);
     return newArr;
 }
 
@@ -34,10 +32,8 @@ console.log(increase([4, 6, 11, -9, 2.1], 3));
 
 // ------------------------------------------4
 
-function filterEven(arr){
-    let even = arr.filter(function(e) {
-        return e % 2 == 0 ;
-    });
+let filterEven = (arr) => {
+    let even = arr.filter((e) => e % 2 == 0);
     return even;
 }
 
@@ -45,10 +41,8 @@ console.log(filterEven([6, 11, 8, 9, 0, 3]));
 
 // ------------------------------------------5
 
-function filterString(arr){
-    let js = arr.filter(function(e) {
-        return e.includes('js') || e.includes('JS');
-    });
+let filterString = (arr) => {
+    let js = arr.filter((e) => e.includes('js') || e.includes('JS'));
     return js;
 }
 
@@ -56,10 +50,8 @@ console.log(filterString(['compiler', 'transpiler', 'babel.js', 'JS standard', '
 
 // ---------------------------------------------------------6
 
-function integers(arr){
-    let int = arr.filter(function(e){
-        return Number.isInteger(e);
-    });
+let integers = (arr) => {
+    let int = arr.filter((e) => Number.isInteger(e));
     return int;
 }
 
@@ -67,14 +59,10 @@ console.log(integers([1.6, 11.34, 9.23, 7, 3.11, 8]));
 
 // ---------------------------------------------------------7
 
-function contain5(...arg){
+let contain5 = (...arg) => {
     var arr = [...arg];
-    let int = arr.filter(function(e){
-        return Number.isInteger(e);
-    });
-    let five = int.filter(function(e) {
-        return e.toString().includes('5');
-    });
+    let int = arr.filter((e) => Number.isInteger(e));
+    let five = int.filter((e) => e.toString().includes('5'));
     return five;
 }
 
@@ -82,12 +70,12 @@ console.log(contain5(23, 11.5, 9, 'abc', 45, 28, 553));
 
 // ----------------------------------------------------------8
 
-function returnIndex(arr){
-    let newArr=[];
-    arr.forEach(function(e, i){
-        if(e > 10){
+let returnIndex = (arr) => {
+    let newArr = [];
+    arr.forEach((e, i) => {
+        if (e > 10) {
             newArr.push(i);
-        }    
+        }
     });
     return newArr;
 }
@@ -98,26 +86,59 @@ console.log(returnIndex([1.6, 11.34, 29.23, 7, 3.11, 18]));
 
 const age = 30;
 
-var arrOfPersons = [ {
+var arrOfPersons = [{
     name: 'Pera',
     age
-},  {
+}, {
     name: 'Zika',
     age
 }, {
     name: 'Laza',
-    age: 23
+    age: 18
 },]
 
-function olderThan25(arr){
-    var newArr = arr.filter(function(e){
-        return e.age > 25;
-    });
-    let names = newArr.map(function(e){
-        return e.name;
-    })
+let olderThan25 = (arr) => {
+    let newArr = arr.filter((e) => e.age > 25);
+    let names = newArr.map((e) => e.name);
     console.log(names);
 }
 
-olderThan25(arrOfPersons);
+let olderThan40 = (arr) => {
+    return arr.some((e) => e.age > 40);
+}
 
+let olderThan20 = (arr) => {
+    return arr.every((e) => e.age > 20);
+}
+
+console.log(olderThan20(arrOfPersons));
+
+// -------------------------------------------10
+
+let positiveInt = (arr) => {
+    if (arr.every((e) => e > 0 && Number.isInteger(e))) {
+        return 'yes';
+    } else {
+        return 'no';
+    }
+}
+
+console.log(positiveInt([3, 11, 9.2, 5, 6]));
+
+// ---------------------------------------------11
+
+let product = (arr) => {
+    return arr.reduce((total, e) => total * e);
+}
+
+console.log(product([2, 8, 3]));
+
+
+// ---------------------------------------------12
+
+let max1 = (arg) => Math.max(...arg);
+console.log(max1([2, 7, 3, 8, 5.4]));
+
+
+let max2 = (arr) => arr.reduce((a,b) => Math.max(a,b));
+console.log(max2([2, 7, 3, 8, 5.4]));
